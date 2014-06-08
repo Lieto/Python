@@ -1,0 +1,4 @@
+import cv2
+
+videoCapture = cv2.VideoCapture('test.avi')
+fps = videoCapture.get(cv2.cv.CV_CAP_PROP_FPS)
