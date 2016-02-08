@@ -173,6 +173,32 @@ class Graph(object):
             return True
         return False
     
+    def diameter(self):
+        """ calculates the diameter of the graph """
+        
+        v = self.vertices()
+        #print(v)
+        #print(len(v))
+        #print(range(len(v)))
+        #print(v[0], v[1])
+        pairs = [ (v[i], v[j]) for i in range(len(v) - 1) for j in range(i+1, len(v)) ]
+        #print(pairs)
+        smallest_paths = []
+        for (s, e) in pairs:
+            paths = self.find_all_paths(s, e)
+            print(paths)
+            smallest = sorted(paths, key=len)[0]
+            smallest_paths.append(smallest)
+            
+        smallest_paths.sort(key=len)
+        
+        # longest path is at the end of list,
+        # i.e. diameter corresponds to the lrnght of this path
+        diameter = len(smallest_paths[-1])
+        return diameter
+
+    
+    
     
         
     
